@@ -1,0 +1,16 @@
+<%= form_for('flight_search', url: root_path, method: :get) do |f| %>
+  <%= f.label :from_airport %>
+  <%= f.select(:from_airport, @airport_options) %>
+
+  <%= f.label :to_airport %>
+  <%= f.select(:to_airport, @airport_options) %>
+
+  <%= f.label :num_tickets %>
+  <%= f.select(:num_tickets, [1,2,3,4]) %>
+
+  <%= f.label :departure_time %>
+  <%= f.select(:departure_time, @departure_times) %>
+
+  <%= f.submit "Search" %>
+
+<% end %>
