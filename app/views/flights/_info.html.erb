@@ -1,0 +1,17 @@
+<h3>Flight Info:</h3>
+<table>
+  <thead>
+    <tr>
+      <td>Flight id</td>
+      <td>From airport</td>
+      <td>To airport</td>
+      <td>Flight date</td>
+    </tr>
+  </thead>
+    <tr>
+      <td><%= @flight.id %></td>
+      <td><%= @flight.from_airport.code %></td>
+      <td><%= @flight.to_airport.code %></td>
+      <td><%= @flight.departure_time %></td>
+    </tr>
+</table>

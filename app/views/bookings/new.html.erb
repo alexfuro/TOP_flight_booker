@@ -1,0 +1,16 @@
+<%= render 'flights/info' %>
+<br>
+<%= form_for(@booking) do |f| %>
+  <%= f.text_field :flight_id, value: @flight.id, type: :hidden %>
+  <h3>Passenger Info:</h3>
+    <%= f.fields_for(:passengers) do |p| %>
+      <%= p.label :name %>
+      <%= p.text_field :name %>
+
+      <%= p.label :email %>
+      <%= p.email_field :email %>
+      <br>
+    <% end %>
+    <br>
+  <%= f.submit %>
+<% end %>

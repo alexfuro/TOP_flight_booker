@@ -1,0 +1,43 @@
+<%= form_for('flight_search', url: root_path, method: :get) do |f| %>
+  <%= f.label :from_airport %>
+  <%= f.select(:from_airport, @airport_options) %>
+
+  <%= f.label :to_airport %>
+  <%= f.select(:to_airport, @airport_options) %>
+
+  <%= f.label :num_tickets %>
+  <%= f.select(:num_tickets, [1,2,3,4]) %>
+
+  <%= f.label :departure_time %>
+  <%= f.select(:departure_time, @departure_times) %>
+
+  <%= f.submit "Search" %>
+
+<% end %>
+
+<br>
+
+<% unless @results.nil? || @results.empty?%>
+  <table>
+    <thead>
+      <tr>
+        <td>Selected</td>
+        <td>From airport</td>
+        <td>To airport</td>
+        <td>Flight date</td>
+      </tr>
+    </thead>
+  <%= form_for('booking', url: new_booking_path, method: :get) do |f| %>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= f.radio_button(:flight_id, result.id) %></td>
+        <td><%= result.from_airport.code %></td>
+        <td><%= result.to_airport.code %></td>
+        <td><%= result.departure_time %></td>
+      </tr>
+    <% end %>
+    </table>
+    <%= f.number_field :num_tickets, value: params[:flight_search][:num_tickets], type: :hidden %>
+    <%= f.submit "Submit" %>
+  <% end %>
+<% end %>

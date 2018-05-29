@@ -1,0 +1,18 @@
+<%= render 'flights/info' %>
+<br>
+<h3>Passenger Info:</h3>
+<table>
+  <thead>
+    <tr>
+      <td>Name:</td>
+      <td>Email:</td>
+    </tr>
+  </thead>
+<% @booking.passengers.to_a.each do |passenger| %>
+  <tr>
+    <td><%= passenger.name %></td>
+    <td><%= passenger.email %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to "Home", root_path %>
