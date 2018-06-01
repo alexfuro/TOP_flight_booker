@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello, <%= @passenger.name %></h1>
+    <p>
+      You have successfully completed a booking on flightbooker.com
+    </p>
+    <p>
+      To login to the site and see the details of your booking,
+       just follow this link: <%= link_to "booking", @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

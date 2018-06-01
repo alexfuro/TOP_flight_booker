@@ -10,8 +10,12 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @passengers = @booking.passengers
 
     if @booking.save
+      @passengers.each do |passenger|
+        PassengerMailer.with(booking: @booking, passenger: passenger).thanks_email.deliver_now
+      end
      redirect_to @booking
     else
      flash.now[:danger] = "Something went wrong!"
